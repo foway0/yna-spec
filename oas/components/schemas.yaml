@@ -1,0 +1,134 @@
+# auth
+SignInPayload:
+  type: object
+  properties:
+    id:
+      type: string
+    password:
+      type: string
+  required:
+    - id
+    - password
+
+SignIn:
+  type: object
+  properties:
+    token:
+      example: qwertyuioopasdfghjklzxcvbnm
+      type: string
+  required:
+    - token
+
+# todo
+TodoCreatePayload:
+  type: object
+  properties:
+    status:
+      type: string
+      enum:
+        - notYet
+        - done
+    body:
+      type: string
+
+TodoUpdatePayload:
+  type: object
+  # TODO oneOf
+  properties:
+    status:
+      type: string
+      enum:
+        - notYet
+        - done
+    body:
+      type: string
+
+TodoList:
+  type: object
+  properties:
+    list:
+      type: array
+      items:
+        $ref: '#/components/schemas/Todo'
+    count:
+      type: integer
+    page:
+      type: integer
+  required:
+    - list
+    - count
+    - page
+
+Todo:
+  type: object
+  properties:
+    todoId:
+      type: string
+    status:
+      type: string
+      enum:
+        - notYet
+        - done
+    body:
+      type: string
+  required:
+    - todoId
+    - status
+    - body
+
+# article
+ArticleCreatePayload:
+  type: object
+  properties:
+    status:
+      type: string
+      enum:
+        - notYet
+        - done
+    body:
+      type: string
+
+ArticleUpdatePayload:
+  type: object
+  # TODO oneOf
+  properties:
+    status:
+      type: string
+      enum:
+        - notYet
+        - done
+    body:
+      type: string
+
+ArticleList:
+  type: object
+  properties:
+    list:
+      type: array
+      items:
+        $ref: '#/components/schemas/Todo'
+    count:
+      type: integer
+    page:
+      type: integer
+  required:
+    - list
+    - count
+    - page
+
+Article:
+  type: object
+  properties:
+    todoId:
+      type: string
+    status:
+      type: string
+      enum:
+        - notYet
+        - done
+    body:
+      type: string
+  required:
+    - todoId
+    - status
+    - body

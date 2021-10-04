@@ -1,0 +1,73 @@
+todos:
+  post:
+    x-eov-operation-id: create
+    x-eov-operation-handler: todos
+    tags:
+      - todo
+    description: create a todo
+    parameters:
+      - $ref: '#/components/parameters/XAuthorizationHeader'
+    security:
+      - jwt: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TodoCreatePayload'
+    responses:
+      204:
+        description: No Content
+  get:
+    x-eov-operation-id: list
+    x-eov-operation-handler: todos
+    tags:
+      - todo
+    description: todo list
+    parameters:
+      - $ref: '#/components/parameters/XAuthorizationHeader'
+    security:
+      - jwt: []
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoList'
+
+todo:
+  put:
+    x-eov-operation-id: update
+    x-eov-operation-handler: todos
+    tags:
+      - todo
+    description: update a todo
+    parameters:
+      - $ref: '#/components/parameters/TodoIdPathParam'
+      - $ref: '#/components/parameters/XAuthorizationHeader'
+    security:
+      - jwt: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TodoUpdatePayload'
+    responses:
+      204:
+        description: No Content
+  delete:
+    x-eov-operation-id: delete
+    x-eov-operation-handler: todos
+    tags:
+      - todo
+    description: delete a todo
+    parameters:
+      - $ref: '#/components/parameters/TodoIdPathParam'
+      - $ref: '#/components/parameters/XAuthorizationHeader'
+    security:
+      - jwt: []
+    responses:
+      204:
+        description: No Content

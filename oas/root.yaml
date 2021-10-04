@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  version: 0.0.1
+  title: yna bff spec
+  description: |
+    my personal website
+
+servers:
+  - url: /v1
+
+tags:
+  - name: system
+    description: system relation api
+  - name: auth
+    description: auth relation api
+  - name: todo
+    description: todo relation api
+  - name: article
+    description: article relation api
+
+paths:
+  # system
+  /ping:
+    $ref: './paths/pings.yaml#/ping'
+
+  # auth
+  /auths/signin:
+    $ref: './paths/auths.yaml#/signIn'
+  /auths/signout:
+    $ref: './paths/auths.yaml#/signOut'
+
+  # todo
+  /todos:
+    $ref: './paths/todos.yaml#/todos'
+  /todos/{todoId}:
+    $ref: './paths/todos.yaml#/todo'
+
+  # article
+  /articles:
+    $ref: './paths/articles.yaml#/articles'
+  /articles/{articleId}:
+    $ref: './paths/articles.yaml#/article'
+
+components:
+  parameters:
+    # path parameters
+    UserIdPathParam:
+      $ref: './components/parameters.yaml#/UserIdPathParam'
+    TodoIdPathParam:
+      $ref: './components/parameters.yaml#/TodoIdPathParam'
+    ArticleIdPathParam:
+      $ref: './components/parameters.yaml#/ArticleIdPathParam'
+
+    # query parameters
+    SearchQueryParam:
+      $ref: './components/parameters.yaml#/SearchQueryParam'
+    PageQueryParam:
+      $ref: './components/parameters.yaml#/PageQueryParam'
+    SizeQueryParam:
+      $ref: './components/parameters.yaml#/SizeQueryParam'
+
+    # header parameters
+    XAuthorizationHeader:
+      $ref: './components/parameters.yaml#/XAuthorizationHeader'
+
+  schemas:
+    # auth
+    SignInPayload:
+      $ref: './components/schemas.yaml#/SignInPayload'
+    SignIn:
+      $ref: './components/schemas.yaml#/SignIn'
+
+    # todo
+    TodoCreatePayload:
+      $ref: './components/schemas.yaml#/TodoCreatePayload'
+    TodoUpdatePayload:
+      $ref: './components/schemas.yaml#/TodoUpdatePayload'
+    TodoList:
+      $ref: './components/schemas.yaml#/TodoList'
+    Todo:
+      $ref: './components/schemas.yaml#/Todo'
+
+    # article
+    ArticleCreatePayload:
+      $ref: './components/schemas.yaml#/ArticleCreatePayload'
+    ArticleUpdatePayload:
+      $ref: './components/schemas.yaml#/ArticleUpdatePayload'
+    ArticleList:
+      $ref: './components/schemas.yaml#/ArticleList'
+    Article:
+      $ref: './components/schemas.yaml#/Article'
+
+  securitySchemes:
+    jwt:
+      type: apiKey
+      name: x-authorization
+      in: header

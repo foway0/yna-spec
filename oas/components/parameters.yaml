@@ -1,0 +1,51 @@
+# path parameters
+UserIdPathParam:
+  in: path
+  name: userId
+  schema:
+    type: string
+  required: true
+
+TodoIdPathParam:
+  in: path
+  name: todoId
+  schema:
+    type: string
+  required: true
+
+ArticleIdPathParam:
+  in: path
+  name: articleId
+  schema:
+    type: string
+  required: true
+
+# query parameters
+SearchQueryParam:
+  in: query
+  name: q
+  schema:
+    type: string
+
+PageQueryParam:
+  in: query
+  name: page
+  schema:
+    type: integer
+    minimum: 1
+
+SizeQueryParam:
+  in: query
+  name: size
+  schema:
+    type: integer
+    minimum: 1
+    maximum: 100
+
+# header parameters
+XAuthorizationHeader:
+  in: header
+  name: x-authorization
+  schema:
+    type: string
+  required: false
