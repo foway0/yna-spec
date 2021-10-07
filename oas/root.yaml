@@ -64,6 +64,12 @@ components:
       $ref: './components/parameters.yaml#/XAuthorizationHeader'
 
   schemas:
+    # common
+    Pager:
+      $ref: './components/schemas.yaml#/Pager'
+    Timestamp:
+      $ref: './components/schemas.yaml#/Timestamp'
+
     # auth
     SignInPayload:
       $ref: './components/schemas.yaml#/SignInPayload'
