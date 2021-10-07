@@ -5,7 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "merger": "swagger-merger -i oas/root.yaml -o ./root.yaml"
+    "clean": "rm -rf dist",
+    "prepare": "mkdir -p dist",
+    "oas-gen": "run-s clean prepare oas-gen:merger oas-gen:validate oas-gen:build",
+    "oas-gen:merger": "swagger-merger -i oas/root.yaml -o ./dist/root.yaml",
+    "oas-gen:validate": "openapi-generator-cli validate -i typescript -i ./dist/root.yaml",
+    "oas-gen:build": "openapi-generator-cli generate -g typescript-node -i ./dist/root.yaml -o ./dist/typescript",
+    "oas-gen-list": "openapi-generator-cli list",
+    "oas-gen-help": "openapi-generator-cli help"
   },
   "repository": {
     "type": "git",
@@ -18,6 +25,8 @@
   },
   "homepage": "https://github.com/foway0/yna-spec#readme",
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.12",
+    "npm-run-all": "^4.1.5",
     "swagger-merger": "^1.4.3"
   }
 }
