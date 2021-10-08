@@ -85,6 +85,8 @@ components:
       $ref: './components/schemas.yaml#/TodoList'
     Todo:
       $ref: './components/schemas.yaml#/Todo'
+    TodoLabel:
+      $ref: './components/schemas.yaml#/TodoLabel'
 
     # article
     ArticleCreatePayload:

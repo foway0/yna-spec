@@ -52,20 +52,24 @@ TodoCreatePayload:
         - done
     body:
       type: string
+  required:
+    - status
+    - body
 
 TodoUpdatePayload:
   oneOf:
     - type: object
       properties:
         label:
-          type: string
-          enum:
-            - notYet
-            - done
+          $ref: '#/components/schemas/TodoLabel'
+      required:
+        - label
     - type: object
       properties:
         body:
           type: string
+      required:
+        - body
 
 TodoList:
   allOf:
@@ -85,16 +89,19 @@ Todo:
     todoId:
       type: string
     label:
-      type: string
-      enum:
-        - notYet
-        - done
+      $ref: '#/components/schemas/TodoLabel'
     body:
       type: string
   required:
     - todoId
     - label
     - body
+
+TodoLabel:
+  type: string
+  enum:
+    - notYet
+    - done
 
 # article
 ArticleCreatePayload:
