@@ -1,155 +1,31 @@
-# common
-Pager:
-  type: object
-  properties:
-    count:
-      type: integer
-    page:
-      type: integer
-  required:
-    - count
-    - page
+openapi: 3.0.3
+info:
+  title: oas common schemas
+  description: common schemas
+  version: 0.0.1
+paths: {}
 
-Timestamp:
-  type: object
-  properties:
-    openedAt:
-      type: integer
-    createdAt:
-      type: integer
-    modifiedAt:
-      type: integer
-
-# auth
-SignInPayload:
-  type: object
-  properties:
-    id:
-      type: string
-    password:
-      type: string
-  required:
-    - id
-    - password
-
-SignIn:
-  type: object
-  properties:
-    token:
-      example: qwertyuioopasdfghjklzxcvbnm
-      type: string
-  required:
-    - token
-
-# todo
-TodoCreatePayload:
-  type: object
-  properties:
-    status:
-      type: string
-      enum:
-        - notYet
-        - done
-    body:
-      type: string
-  required:
-    - status
-    - body
-
-TodoUpdatePayload:
-  oneOf:
-    - type: object
+components:
+  schemas:
+    Pager:
+      type: object
       properties:
-        label:
-          $ref: '#/components/schemas/TodoLabel'
+        count:
+          type: integer
+          example: 100
+        currentPage:
+          type: integer
+          example: 1
       required:
-        - label
-    - type: object
+        - count
+        - currentPage
+
+    Timestamp:
+      type: object
       properties:
-        body:
-          type: string
-      required:
-        - body
-
-TodoList:
-  allOf:
-    - $ref: '#/components/schemas/Pager'
-    - type: object
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/Todo'
-      required:
-        - list
-
-Todo:
-  type: object
-  properties:
-    todoId:
-      type: string
-    label:
-      $ref: '#/components/schemas/TodoLabel'
-    body:
-      type: string
-  required:
-    - todoId
-    - label
-    - body
-
-TodoLabel:
-  type: string
-  enum:
-    - notYet
-    - done
-
-# article
-ArticleCreatePayload:
-  type: object
-  properties:
-    subject:
-      type: string
-    body:
-      type: string
-  required:
-    - subject
-    - body
-
-ArticleUpdatePayload:
-  type: object
-  properties:
-    subject:
-      type: string
-    body:
-      type: string
-  required:
-    - subject
-    - body
-
-ArticleList:
-  allOf:
-    - $ref: '#/components/schemas/Pager'
-    - type: object
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/Article'
-      required:
-        - list
-
-Article:
-  allOf:
-    - type: object
-      properties:
-        articleId:
-          type: string
-        subject:
-          type: string
-        body:
-          type: string
-      required:
-        - articleId
-        - subject
-        - body
-    - $ref: '#/components/schemas/Timestamp'
+        openedAt:
+          type: integer
+        createdAt:
+          type: integer
+        modifiedAt:
+          type: integer
