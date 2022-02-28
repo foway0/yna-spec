@@ -21,15 +21,3 @@ paths:
   # site
   /sites:
     $ref: './paths/sites.yaml#/sites'
-
-components:
-  schemas:
-    # common
-    Pager:
-      $ref: '../components/schemas.yaml#/components/schemas/Pager'
-
-    # site
-    Site:
-      $ref: './components/sites.yaml#/components/schemas/Site'
-    SiteList:
-      $ref: './components/sites.yaml#/components/schemas/SiteList'

@@ -11,4 +11,4 @@ sites:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SiteList'
+              $ref: '../components/sites.yaml#/components/schemas/SiteList'
