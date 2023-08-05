@@ -1,0 +1,12 @@
+spaces:
+  get:
+    tags:
+      - site
+    description: site list
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: '../components/spaces.yaml#/components/schemas/SpaceList'

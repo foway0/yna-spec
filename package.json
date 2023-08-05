@@ -6,14 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist",
-    "prepare": "mkdir -p dist dist/bff-admin",
+    "prepare": "mkdir -p dist dist/bff",
     "oas-gen": "run-s clean prepare oas:validate oas:merge",
     "oas-gen-list": "openapi-generator-cli list",
     "oas-gen-help": "openapi-generator-cli help",
     "oas:validate": "run-p oas:validate:*",
-    "oas:validate:bff-admin": "openapi-generator-cli validate -i ./oas/bff-admin/root.yaml",
+    "oas:validate:bff": "openapi-generator-cli validate -i oas/bff/root.yaml",
     "oas:merge": "run-p oas:merge:*",
-    "oas:merge:bff-admin": "openapi-generator-cli generate -g openapi-yaml -i ./oas/bff-admin/root.yaml -o ./dist/bff-admin"
+    "oas:merge:bff": "openapi-generator-cli generate -g openapi-yaml -i oas/bff/root.yaml -o ./dist/bff"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/foway0/yna-spec#readme",
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.4.12",
-    "dtsgenerator": "^3.13.2",
+    "@openapitools/openapi-generator-cli": "^2.6.0",
+    "dtsgenerator": "^3.18.0",
     "npm-run-all": "^4.1.5"
   }
 }

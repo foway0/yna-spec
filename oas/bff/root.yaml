@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: yna admin bff spec
+  description: admin
+  version: 0.0.1
+
+servers:
+  - url: /v1
+
+tags:
+  - name: system
+    description: system relation api
+  - name: space
+    description: space relation api
+
+paths:
+  # system
+  /ping:
+    $ref: './paths/pings.yaml#/ping'
+
+  # space
+  /spaces:
+    $ref: './paths/spaces.yaml#/spaces'

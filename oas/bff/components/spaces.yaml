@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: yna admin bff spec
+  description: admin
+  version: 0.0.1
+paths: {}
+
+components:
+  schemas:
+    Space:
+      allOf:
+        - $ref: '../../components/schemas.yaml/#/components/schemas/SpaceId'
+        - $ref: '../../components/schemas.yaml/#/components/schemas/Title'
+        - $ref: '../../components/schemas.yaml/#/components/schemas/Priority'
+      required:
+        - siteId
+        - title
+        - priority
+
+    Spaces:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/Space'
+
+    SpaceList:
+      allOf:
+        - $ref: '../../components/schemas.yaml/#/components/schemas/Pager'
+        - $ref: '#/components/schemas/Spaces'
+      required:
+        - count
+        - currentPage
+        - list

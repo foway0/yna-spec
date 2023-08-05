@@ -3,29 +3,46 @@ info:
   title: oas common schemas
   description: common schemas
   version: 0.0.1
-paths: {}
+paths: { }
 
 components:
   schemas:
-    Pager:
+    Count:
       type: object
       properties:
         count:
           type: integer
           example: 100
+
+    CurrentPage:
+      type: object
+      properties:
         currentPage:
           type: integer
           example: 1
-      required:
-        - count
-        - currentPage
 
-    Timestamp:
+    Pager:
+      allOf:
+        - $ref: '#/components/schemas/Count'
+        - $ref: '#/components/schemas/CurrentPage'
+
+    SpaceId:
       type: object
       properties:
-        openedAt:
+        siteId:
+          type: string
+          example: 'xxxx'
+
+    Title:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 'todo'
+
+    Priority:
+      type: object
+      properties:
+        priority:
           type: integer
-        createdAt:
-          type: integer
-        modifiedAt:
-          type: integer
+          example: 1
